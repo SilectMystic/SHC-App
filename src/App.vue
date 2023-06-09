@@ -1,11 +1,20 @@
 <script setup>
 import {ref} from 'vue'
 let data = ref()
+let amigos = data.value
 
 async function fetchData() {
-  let result = await fetch("https://holidays.abstractapi.com/v1/?api_key=1655f53d1cdd40048392782e5a54db11&country=US&year=2023&month=6&day=5")
+  let result = await fetch("https://holidays.abstractapi.com/v1/?api_key=1655f53d1cdd40048392782e5a54db11&country=US&year=2023&month=6&day=6")
   console.log(result)
   data.value = result
+}
+function showData() {
+  if (amigos.length > 0){
+    console.log("yasss" + amigos.value)
+  }
+  else {
+    alert("no we")
+  }
 }
 </script>
 
@@ -19,6 +28,8 @@ async function fetchData() {
     <router-link to="/days" class="navB">Days</router-link>
     &nbsp;
     <button @click="fetchData()">Fetch</button>
+  &nbsp;
+    <button @click="showData()">Data</button>
   </nav>
 </div>
 <br>
@@ -27,7 +38,7 @@ async function fetchData() {
 <br><br>
 <hr>
 <footer class="v-container">
-  Copyright © Carlos Vasquez. All Rights Reserved
+  Copyright © Carlos Vásquez. All Rights Reserved
 </footer>
 </template>
 
