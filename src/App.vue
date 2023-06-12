@@ -1,35 +1,29 @@
 <script setup>
 import {ref} from 'vue'
 let data = ref()
-let amigos = data.value
+let year = ref()
+let month = ref()
+let day = ref()
+
 
 async function fetchData() {
-  let result = await fetch("https://holidays.abstractapi.com/v1/?api_key=1655f53d1cdd40048392782e5a54db11&country=US&year=2023&month=6&day=6")
+  let result = await fetch("https://holidays.abstractapi.com/v1/?api_key=1655f53d1cdd40048392782e5a54db11&country=US&year=" + year.value + "&month=" + month.value + "&day=" + day.value)
   console.log(result)
-  data.value = result
+  data.value = await result.json()
 }
 function showData() {
-  if (amigos.length > 0){
-    console.log("yasss" + amigos.value)
-  }
-  else {
-    alert("no we")
-  }
+  alert(data.value)
 }
 </script>
 
 <template>
 <div id="outerPad">
   <nav>
-    <router-link to="/" class="navB">Home</router-link>
-    &nbsp;
-    <router-link to="/months" class="navB">Months</router-link>
-    &nbsp;
-    <router-link to="/days" class="navB">Days</router-link>
-    &nbsp;
-    <button @click="fetchData()">Fetch</button>
-  &nbsp;
-    <button @click="showData()">Data</button>
+    <div class="navIn">
+      <router-link to="/" class="navB">Home</router-link>
+      &nbsp;
+      <router-link to="/form" class="navB">Holidays</router-link>
+    </div>
   </nav>
 </div>
 <br>
@@ -43,6 +37,7 @@ function showData() {
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
  body {
   background-color: #0f0e17;
   color: white;
@@ -52,13 +47,18 @@ function showData() {
   margin-left: auto;
   margin-right: auto;
   }
-  #outerPad {
+  /* #outerPad {
     background-color: white;
     padding: 10px;
     border-radius: 8px;
-  } 
+  } */
   nav {
-    background-color: orange;
+    padding: 10px;
+    background-color: #1f1d30;
+    border-radius: 8px;
+  }
+  .navIn {
+    background-color: #403c63;
     padding: 8px;
     border-radius: 8px;
     word-spacing: 30px;
@@ -67,6 +67,7 @@ function showData() {
   }
   .navB {
     text-decoration: none;
+    color: black;
   }
   .navB:hover {
     color: white;
@@ -78,4 +79,7 @@ function showData() {
     margin-bottom: auto;
     float: left;
   }
+  hr {
+    border: 1px solid #2b2655;
+}
 </style>
