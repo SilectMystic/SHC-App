@@ -16,21 +16,20 @@ function showData() {
 }
 </script>
 
-<template>
+<template class="max">
 <div id="outerPad">
   <nav>
     <div class="navIn">
       <router-link to="/" class="navB">Home</router-link>
       &nbsp;
-      <router-link to="/form" class="navB">Holidays</router-link>
+      <router-link to="/holidays" class="navB">Holidays</router-link>
     </div>
   </nav>
 </div>
-<br>
 {{ data }}
 <router-view />
 <br><br>
-<hr>
+<hr class="max">
 <footer class="v-container">
   Copyright © Carlos Vásquez. All Rights Reserved
 </footer>
@@ -43,7 +42,6 @@ function showData() {
   color: white;
   font-family: 'Nunito', sans-serif;
   text-align: center;
-  max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
   }
@@ -81,5 +79,11 @@ function showData() {
   }
   hr {
     border: 1px solid #2b2655;
-}
+  }
+  .max {
+    max-width: 1080px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>

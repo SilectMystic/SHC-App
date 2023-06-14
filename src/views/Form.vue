@@ -9,14 +9,14 @@ async function fetchData() {
   let result = await fetch("https://holidays.abstractapi.com/v1/?api_key=1655f53d1cdd40048392782e5a54db11&country=US&year=" + year.value + "&month=" + month.value + "&day=" + day.value)
   let json = await result.json()
 
-  // let str = ""
-  // json.forEach((ob) => {
-  //   str = str + ob.name + "\n"
-  // })
+  let str = ""
+  json.forEach((ob) => {
+    str = str + ob.name + "," + "\n"
+  })
 
-  // console.log(str)
+  console.log(str)
 
-  data.value = json
+  data.value = str
 
 };
 
@@ -27,6 +27,10 @@ function submit() {
 </script>
 
 <template>
+<div class="pageTitle">
+  Holidays Form
+</div>
+<br>
 <h3>
   Input your request below to find holidays at any date that you input.
 </h3>
@@ -66,5 +70,13 @@ function submit() {
 input:focus {
     border: rgb(34, 32, 32) 5px solid;
     cursor: pointer;
+}
+
+.pageTitle {
+    background-color: #312e4c;
+    padding: 9px;
+    border-radius: 8px;
+    max-width: 1025px;
+    margin: auto;
 }
 </style>

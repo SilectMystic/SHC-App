@@ -19,7 +19,7 @@ const routes = [
       component: Days
    },
    {
-      path: '/form',
+      path: '/holidays',
       component: Form
    },
 ]
